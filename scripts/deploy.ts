@@ -2,8 +2,8 @@ import { deployConfig } from "./deployConfig";
 import { runCmd } from './runCommand';
 
 const stackName = 'plant-tracker-alexa-skill';
-const profile = 'personal';
-const region = 'eu-west-1';
+const profile = deployConfig.awsProfile;
+const region = deployConfig.awsRegion;
 
 const deploySam = async () => {
 
