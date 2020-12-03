@@ -1,0 +1,50 @@
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  AlexaSkillId:
+    Type: String
+    Description: ID of the Alexa skill as shown in Alexa Developer Console
+
+Outputs:
+  LambdaArn:
+    Value: !GetAtt HandlerFunction.Arn
+
+Resources:
+  HandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs12.x
+      CodeUri: '../dist/plantTrackerFunction'
+      FunctionName: plant-tracker-alexa-skill-function
+      MemorySize: 128
+      Events:
+        AlexaTrigger:
+          Type: AlexaSkill
+          Properties:
+            SkillId: !Ref AlexaSkillId
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref PlantsTable
+
+  PlantsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: plant-tracker-skill-plants-table
+      AttributeDefinitions:
+        - AttributeName: userId
+          AttributeType: S
+        - AttributeName: sortKey
+          AttributeType: S
+      KeySchema:
+        - AttributeName: userId
+          KeyType: HASH
+        - AttributeName: sortKey
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+
+
+

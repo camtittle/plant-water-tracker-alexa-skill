@@ -1,0 +1,142 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "plant tracker",
+            "intents": [
+                {
+                    "name": "PlantWateredIntent",
+                    "slots": [
+                        {
+                            "name": "plantName",
+                            "type": "PlantName",
+                            "samples": [
+                                "i've watered {plantName}",
+                                "{plantName}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "i've watered {plantName}",
+                        "i've just watered {plantName}",
+                        "i have watered {plantName}",
+                        "{plantName} has been watered"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                }
+            ],
+            "types": [
+                {
+                    "name": "PlantName",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "the plant in the bathroom",
+                                "synonyms": [
+                                    "the plant in my bathroom",
+                                    "my bathroom plant",
+                                    "bathroom plant",
+                                    "the bathroom plant"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "the leuconeura plant",
+                                "synonyms": [
+                                    "my leuconeura plant",
+                                    "my leuconeura",
+                                    "the leuconeura"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "the plant on the balcony",
+                                "synonyms": [
+                                    "my balcony plant",
+                                    "the balcony plant",
+                                    "balcony plant"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "the plant on the table",
+                                "synonyms": [
+                                    "my table plant",
+                                    "the table plant",
+                                    "table plant"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "the peace lily",
+                                "synonyms": [
+                                    "my peace lily",
+                                    "peace lily"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "the cheese plant",
+                                "synonyms": [
+                                    "my cheese plant",
+                                    "cheese plant"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "PlantWateredIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "plantName",
+                            "type": "PlantName",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "plantSlotPrompt"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "plantSlotPrompt",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which plant have you watered?"
+                    }
+                ]
+            }
+        ]
+    }
+}
