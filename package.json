@@ -6,6 +6,7 @@
   "dependencies": {
     "ask-sdk": "^2.10.0",
     "aws-sdk": "^2.799.0",
+    "babel-plugin-transform-typescript-metadata": "^0.3.1",
     "date-fns": "^2.16.1",
     "inversify": "^5.0.1",
     "reflect-metadata": "^0.1.13"
