@@ -7,7 +7,7 @@ import {
   Response,
 } from 'ask-sdk-model';
 
-export abstract class IPlantWateredIntentHandler implements RequestHandler {
+export abstract class IPlantEnquiryIntentHandler implements RequestHandler {
 
   abstract canHandle(handlerInput: HandlerInput): boolean;
 

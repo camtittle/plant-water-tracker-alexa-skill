@@ -18,4 +18,8 @@ export class PlantService implements IPlantService {
     await this.plantRepository.putPlantRecord(record);
   }
 
+  getPlant(userId: string, plantName: string): Promise<PlantRecord> {
+    return this.plantRepository.getPlantRecord(userId, plantName);
+  }
+
 }

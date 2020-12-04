@@ -11,6 +11,8 @@ import { IPlantService } from "./domain/interfaces/IPlantService";
 import { ILambdaEventHandler } from "./domain/interfaces/ILambdaEventHandler";
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
+import { IPlantEnquiryIntentHandler } from './domain/interfaces/IPlantEnquiryIntentHandler';
+import { PlantEnquiryIntentHandler } from './business/intentHandlers/plantEnquiryIntentHandler';
 
 
 export const diContainer = new Container();
@@ -20,6 +22,7 @@ diContainer.bind<IPlantService>(IPlantService).to(PlantService).inSingletonScope
 
 // Alexa Intent Request handler
 diContainer.bind<RequestHandler>(IPlantWateredIntentHandler).to(PlantWateredIntentHandler).inSingletonScope();
+diContainer.bind<RequestHandler>(IPlantEnquiryIntentHandler).to(PlantEnquiryIntentHandler).inSingletonScope();
 
 // Lambda function handlers
 diContainer.bind<ILambdaEventHandler<RequestEnvelope, any, ResponseEnvelope>>(ILambdaEventHandler).to(PlantTrackerEventHandler).inSingletonScope();

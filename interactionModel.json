@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "plant tracker",
+            "invocationName": "plant water tracker",
             "intents": [
                 {
                     "name": "PlantWateredIntent",
@@ -37,6 +37,26 @@
                 {
                     "name": "AMAZON.CancelIntent",
                     "samples": []
+                },
+                {
+                    "name": "PlantEnquiryIntent",
+                    "slots": [
+                        {
+                            "name": "plantName",
+                            "type": "PlantName"
+                        }
+                    ],
+                    "samples": [
+                        "when {plantName} was last watered",
+                        "when {plantName} was watered",
+                        "when i last watered {plantName}",
+                        "when i watered {plantName}",
+                        "when was {plantName} watered",
+                        "when did i water {plantName}",
+                        "when was {plantName} last watered",
+                        "how long since i watered {plantName}",
+                        "when did i last water {plantName}"
+                    ]
                 }
             ],
             "types": [

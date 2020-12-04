@@ -31,7 +31,7 @@ export class PlantWateredIntentHandler implements IPlantWateredIntentHandler {
     const request = handlerInput.requestEnvelope.request as IntentRequest;
     const plantName = request.intent.slots[Slots.PlantName].value;
 
-    console.log(`Watering plant ${plantName} for userId ${userId}`);
+    console.log(`Watering plant '${plantName}' for userId ${userId}`);
 
     await this.plantService.markPlantWatered(userId, plantName);
 
